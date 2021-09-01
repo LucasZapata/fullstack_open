@@ -15,7 +15,7 @@ const App = () => {
 
   useEffect(() => {
     axios.get('http://localhost:3001/persons').then(response => {setPersons(response.data)})
-    console.log(persons)})
+    console.log(persons)}, [])
 
   const writeName = (event) => setNewName(event.target.value)
   const writeNumber = (event) => setNewNumber(event.target.value)
