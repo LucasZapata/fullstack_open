@@ -10,7 +10,7 @@ const PhoneList = ({entries, filter}) =>{
         
     return(
      <ul>
-         {result().map(entry => <li key = {entry.id}>{entry.name} {entry.phone}</li>)}
+         {result().map(entry => <li key = {entry.id}>{entry.name} {entry.number}</li>)}
     </ul>)
 }
 
