@@ -7,7 +7,7 @@ const NewEntry = ({onSubmit, newName, onTextChange, newNumber, onNumberChange}) 
                 name: <input value = {newName} onChange = {onTextChange}/>
             </div>
             <div>
-                name: <input value = {newNumber} onChange = {onNumberChange}/>
+                number: <input value = {newNumber} onChange = {onNumberChange}/>
             </div>
             <div>
                 <button type="submit">add</button>

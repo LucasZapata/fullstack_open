@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import NetworkComm from './components/NetworkComm.js'
 import PhoneList from './components/PhoneList.js'
 import NewEntry from './components/NewEntry.js'
 import Filter from './components/Filter.js'
@@ -14,8 +14,7 @@ const App = () => {
   const [filterTerm, setFilterTerm] = useState('')
 
   useEffect(() => {
-    axios.get('http://localhost:3001/persons').then(response => {setPersons(response.data)})
-    console.log(persons)}, [])
+    const dbData = NetworkComm.GetDB().then(data => setPersons(data))}, [])
 
   const writeName = (event) => setNewName(event.target.value)
   const writeNumber = (event) => setNewNumber(event.target.value)
@@ -26,13 +25,27 @@ const App = () => {
 
   const addName = (event) => {
     event.preventDefault()
-    if (persons.filter(p => p.name === newName).length === 0) {
-      const newId = (persons[persons.length - 1].id + 1)
-      const newPerson = { id: newId, name: newName, number: newNumber }
-      setPersons(persons.concat(newPerson))
+    const newPerson = {name: newName, number: newNumber }
+    const existingData = persons.find(n => n.name === newName)
+    console.log(existingData)
+    if (existingData === undefined) {
+      const dbData = NetworkComm.AddDB(newPerson).then(data => setPersons(persons.concat(data)))
     }
-    else {
-      window.alert(`${newName} is already added to phonebook`)
+    else if (existingData.number !== newPerson.number){
+      const confirmation = window.confirm(`Change number for ${newName}?`)
+      if (confirmation){
+      const dbData = NetworkComm.EditDB(existingData.id, newPerson).then(data => {
+        setPersons(persons.map(p => p.id !== existingData.id ? p: data))}) 
+      }
+    }
+    else
+      {window.alert(`${newName}, number ${newNumber}, is already added to phonebook.`)}
+  }
+
+  const deletePerson = (personId, personName) => {
+    const confirmation = window.confirm(`Delete entry ${personName}?`)
+    if (confirmation){
+      const dbData = NetworkComm.RemoveDB(personId).then(setPersons(persons.filter(p => p.id !== personId)))     
     }
   }
 
@@ -42,7 +55,7 @@ const App = () => {
       <Filter FilterTerm={filterForm} onFilterChange={writeFilterForm} SetFilter={setFilter} />
       <NewEntry newName={newName} newNumber={newNumber} onTextChange={writeName} onNumberChange={writeNumber} onSubmit={addName} />
       <h2>Numbers</h2>
-      <PhoneList entries={persons} filter={filterTerm} />
+      <PhoneList entries={persons} filter={filterTerm} deleteEntry={deletePerson} />
     </div>
   )
 }

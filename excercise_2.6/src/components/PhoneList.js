@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PhoneList = ({entries, filter}) =>{
+const PhoneList = ({entries, filter, deleteEntry}) =>{
     const result = () => {
         let res = entries
         if (filter !==  ''){
@@ -10,7 +10,7 @@ const PhoneList = ({entries, filter}) =>{
         
     return(
      <ul>
-         {result().map(entry => <li key = {entry.id}>{entry.name} {entry.number}</li>)}
+         {result().map(entry => <li key = {entry.id}>{entry.name} {entry.number} <button onClick={() => deleteEntry(entry.id, entry.name)}>DELETE</button></li>)}
     </ul>)
 }
 
