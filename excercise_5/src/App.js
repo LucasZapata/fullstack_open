@@ -70,7 +70,6 @@ const App = () => {
     const onDeleteBlog = (targetBlog) => {
         if (window.confirm(`delete ${targetBlog.name}`)){
             blogService.deleteBlog(targetBlog).then((response) => {
-                console.log('AAAAAAAAAAAAAAA',response)
                 if (response)
                     if (response.status === 202)
                         {loadBlogs()}
