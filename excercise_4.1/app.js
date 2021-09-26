@@ -24,6 +24,10 @@ app.use(express.json())
 app.use('/api/blogs', Middleware.TokenExtractor, BlogRouter)
 app.use('/api/users', UserRouter)
 app.use('/api/login', LoginRouter)
+if (process.env.NODE_ENV === 'test') {
+	const TestingRouter = require('./controllers/test')
+	app.use('/api/testing', TestingRouter)
+}
 app.use(Middleware.ErrorHandler)
 
 module.exports = app
