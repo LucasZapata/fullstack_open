@@ -10,7 +10,7 @@ const SearchResults = ({list, term, maxResults}) =>{
         if ((term === '')){
             return('')}
         term = term.toLowerCase()
-        const result = list.filter(country => country.name.toLowerCase().startsWith(term))
+        const result = list.filter(country => country.name.common.toLowerCase().startsWith(term))
         
         return(result)
     }

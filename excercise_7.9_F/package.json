@@ -1,24 +1,29 @@
 {
-  "name": "excercise_2.6",
+  "name": "bloglist-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "axion": "^0.1.0",
+    "@testing-library/user-event": "^12.6.3",
     "axios": "^0.21.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.5",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "^1.1.5",
     "redux": "^4.1.1",
-    "web-vitals": "^1.1.2"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.3.1",
+    "typescript": "^3.9.10",
+    "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "eslint": "eslint .",
+    "cypress:open": "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -38,7 +43,14 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "http://localhost:3003",
   "devDependencies": {
-    "json-server": "^0.16.3"
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.0",
+    "cypress": "^8.4.1",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-jest": "^24.4.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "redux-devtools-extension": "^2.13.9"
   }
 }

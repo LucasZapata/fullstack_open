@@ -5,14 +5,14 @@ const SingleCountry = ({country}) =>{
         return(null)
     return(
     <div>
-        <h1>{country.name}</h1>
+        <h1>{country.name.official}</h1>
         <p>population {country.population}</p>
-        <p>capital {country.capital}</p>
+        <p>capital {country.capital[0]}</p>
         <h2>languages</h2>
         <ul>
-            {country.languages.map(lang => <li key={lang.name}>{lang.name}</li>)}
+            {Object.keys(country.languages).forEach(lang => <li key={lang}>{country.languages.lang}</li>)}
         </ul>
-        <img src={country.flag} width = {400} alt = {'Flag'}/>
+        <img src={country.flags.svg} width = {400} alt = {'Flag'}/>
     </div>)
 
 }
