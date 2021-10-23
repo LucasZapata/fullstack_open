@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client'
 import React from 'react'
 import { ALL_BOOKS } from '../queries'
 
-const Books = (props) => {
+const Recommended = (props) => {
   const books = useQuery(ALL_BOOKS)
   
   if (!props.show) {
@@ -30,7 +30,7 @@ const Books = (props) => {
           {books.data.allBooks.map(a =>
             <tr key={a.title}>
               <td>{a.title}</td>
-              <td>{a.author}</td>
+              <td>{a.author.name}</td>
               <td>{a.published}</td>
             </tr>
           )}
@@ -40,4 +40,4 @@ const Books = (props) => {
   )
 }
 
-export default Books
+export default Recommended
