@@ -1,4 +1,4 @@
 # fullstack_open
 
-Ejericios para el curso de Javascript y React Fullstack Open.
+Ejericios de Javascript y React para el curso Fullstack Open.
 
