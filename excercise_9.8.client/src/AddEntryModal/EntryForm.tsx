@@ -43,20 +43,12 @@ const EntryForm = ({onSubmit}:Props) => {
 
     return (
         <Formik
-            /* initialValues = {{
+            initialValues = {{
                 type: "HospitalEntry",
                 description: "",
                 date: "",
                 specialist: "",
                 employerName: "",
-                healthCheckRating: 0
-            }} */
-            initialValues = {{
-                type: "Hospital",
-                description: "TEST",
-                date: "1/1/1",
-                specialist: "Tester",
-                employerName: "Me",
                 healthCheckRating: 0
             }}
             onSubmit = {onSubmit}
